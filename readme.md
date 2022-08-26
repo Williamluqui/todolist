@@ -1,6 +1,6 @@
 
 <h1 align="center">
-    <img alt="IMG" title="IMG" src=" "  />
+    <img alt="IMG" title="IMG" src="https://user-images.githubusercontent.com/88260564/186831746-abf68f7d-958b-4dfd-8c71-8a544c232b2c.png"  />
 </h1>
 
 
@@ -103,9 +103,9 @@ As seguintes ferramentas estão sendo utilizadas na construção do projeto:
 + Middlewares
 + Bcript 
 
-> Veja o arquivo  [package.json]()
+> Veja o arquivo  [package.json](https://github.com/Williamluqui/todolist/blob/main/package.json)
 
-#### [](https://github.com/Williamluqui/blog-bootstrap-5)**Server**  ([NodeJS](https://nodejs.org/en/)  )
+#### [](https://github.com/Williamluqui/todolist)**Server**  ([NodeJS](https://nodejs.org/en/)  )
 
 -   **[Express](https://expressjs.com/)**
 
