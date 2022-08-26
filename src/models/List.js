@@ -1,3 +1,4 @@
+const { request } = require("express");
 const knex = require("../database/connection");
 
 class listApp{
@@ -14,12 +15,53 @@ class listApp{
     }
     async newList(body){
         try {
-            await knex.insert({body}).table("list");
+            await knex.insert({body}).table("list");            
         } catch (error) {
             console.log(error);
         }
 
     }
+
+    async findById(id){
+        
+        try {
+
+         let result = await knex.select(['id','body'])
+            .where({id:id})
+            .table('list')   
+                  
+                if (result.length > 0) {
+                    return result[0];
+                } else {
+                    return undefined;
+                }
+
+        } catch (error) {
+            console.log(error)
+            return undefined;
+        }
+    }
+    async update(id, body){
+        let updateList = await this.findById(id);
+         
+            
+
+        if (updateList != undefined){
+           let editList = {};           
+            if (body != undefined) {
+                // editList.id = id
+                editList.body = body
+                }
+             try {                    
+                return await knex.where({id:id}).update(editList).table('list');            
+                    
+            } catch (error) {
+                    console.log(error)
+            }
+
+        }
+
+    } 
 
 }
 

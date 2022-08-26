@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 const port = process.env.PORT;
-const {COOKIE_PARSE_KEY }= process.env;
+const {COOKIE_PARSE_KEY} = process.env;
 const {SECRET_SESION} = process.env;
 const bodyParser = require('body-parser');
 const router = require('./routes/routes');
@@ -39,7 +39,6 @@ app.use(express.static( "./src/public"));
 
 
 app.use("/", router);
-
 
 
 app.listen(port,()  => {console.log(`Server is running on port: ${port}!`);})

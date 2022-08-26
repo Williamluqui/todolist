@@ -22,7 +22,7 @@
 
 ## 💻 Sobre o projeto
 
-Para colocar os ensinamentos de MVC e REST resolvi criar esse TodoList com o NODE usando Mysql e Knex,
+Para colocar os ensinamentos de MVC resolvi criar esse TodoList com o NODE usando Mysql e Knex,
 criei as migrations para o banco de dados.Para o front end usei templates Bootstrap 5 .
 
 
