@@ -1,54 +1,39 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/js/bootstrap.min.js">
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/core.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>ToDoList</title>
-  </head>
-  <body>
+<!-- HEADER PAGE  -->
+<%- include ('./partials/header.ejs')%>
+
+
 <!-- NAVABAR-->
-<header>
-  <nav class="navbar navbar-light navbar-expand-md border rounded shadow-sm">
-    <div class="container mobile-profile">
-      <a class="navbar-brand " href="#">
-        <img src="./images/logo.png">
-      </a>
-      <ul>
-        <li class="nav-item dropdown">
-          <a class=" dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span>Username</span>
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li>
-              <a class="dropdown-item" href="#">Perfil</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Sair</a>
-            </li>
-          </ul>
-        </li>
-    </div>
-  </nav>
-</header>
-<!-- CONTEUDO -->
+<%- include ('./partials/navbar.ejs')%>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+  </symbol>
+  <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+  </symbol>
+  <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </symbol>
+</svg>
+
+
+  <!--  ALERTS MESSAGE  -->
+  <%- include ('./partials/alertsMessages.ejs')%>
+
+
+<!-- CONTEUDO CARD ADICINAR -->
 <section class="vh-100">
   <div class="container py-4 h-75">
     <div class="row d-flex justify-content-center align-items-center h-75 ">
       <div class="col">
         <div class="card " id="list1" style="border-radius: .75rem; background-color: #f5f5f5;">
+          
           <div class="card-body py-4  px-md-4">
             <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
-              <i class="fas fa-check-square me-1"></i>
+              <img src="./images/check-list.png" alt="">
               <u> ToDoList </u>
-            </p>
+              </p>
             <form action="/savelist" method="POST">
               <div class="pb-1">
                 <div class="card">
@@ -63,6 +48,8 @@
                 </div>
               </div>
             </form>
+
+
             <hr class="my-4">
             <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
               <p class="small mb-0 me-2 text-muted">Filtro</p>
@@ -80,64 +67,31 @@
                 <i class="fas fa-sort-amount-down-alt ms-2"></i>
               </a>
             </div>
-    <!-- MODAL DELETE -->
-    <!--Modal: modalConfirmDelete-->
-    <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-        <!--Content-->
-        <div class="modal-content text-center">
-          <!--Header-->
-          <div class="modal-header bg-danger text-white d-flex justify-content-center">
-            <p class="heading">Tem certeza que deseja excluir?</p>
-          </div>
-          <!--Body-->
-          <div class="modal-body">
-            <i class="fas fa-times fa-3x text-danger animated rotateIn"></i>
-          </div>
-          <!--Footer-->
-          <div class="modal-footer d-flex justify-content-center">
-            <a href="" class="btn  btn-outline-danger">Sim</a>
-            <a type="button" class="btn  btn-danger waves-effect" data-bs-dismiss="modal">Não</a>
-          </div>
-        </div>
-        <!--/.Content-->
-      </div>
-    </div>
-    <!--Modal: modalConfirmDelete-->
-      <%= findList.length %>
+    
+            
+           
+    
+      
   <!-- img para tarefas vazias  -->
+
     <% if(findList.length == 0){%> 
       <div class="image col-md-9 text-center ">
       <img src="./images/astronaut.svg" >
       </div>
-      <div class="text-center"><%=message%> 
+      <div class="text-center"><%=messageListVoid%> 
       </div>
     <% } else{%>
 
   <%findList.forEach(list => {%> 
-    <!-- MODAL EDIT -->
-    <form action="/update/<%=list.id%> " method="post">
-    <div class="modal fade" tabindex="-1" id="modalEditar<%=list.id%>">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Editar Lista</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            <div class="form-outline">
-            <input type="text" name="body" id="form12" class="form-control" value="<%=list.body%>"/>
-            <!-- <label class="form-label" for="form12">Editar tarefa...</label> -->
-            </div>
-            </div>
-            <div class="modal-footer">
-            <button  type="submit" class="btn btn-success" id="confEditar" >Editar </button>
-            <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancelar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
+
+      <!-- MODAL EDIT -->
+      <%- include ('./partials/modalEdit.ejs',{list:list})%>
+      
+
+      <!-- MODAL DELETE -->
+      <%- include ('./partials/modalDelete.ejs',{list:list})%>
+
+
       <!-- CONTEUDO DA LISTA --> 
       <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
         <li
@@ -154,7 +108,7 @@
         <div class="d-flex flex-row justify-content-end mb-1">   
         <a type="submit" id="confEditar" class="text-info " data-bs-toggle="modal" title="<%=list.body%> " data-bs-target="#modalEditar<%=list.id%>">
         <i class="fas fa-pencil-alt me-3"></i></a>             
-        <a href="#!" class="text-danger" data-bs-toggle="modal" data-bs-target="#modalConfirmDelete" title="Deletar"><i
+        <a href="#!" class="text-danger" data-bs-toggle="modal" data-bs-target="#modalConfirmDelete<%=list.id%>" title="Deletar"><i
         class="fas fa-trash-alt"></i></a>
         </div>
         <div class="text-end text-muted">
@@ -169,19 +123,17 @@
         <%  } %> 
             </li>
           </ul>
+          <span type="button" class="">
+            Listas <span class="badge bg-secondary"><%=findList.length%></span>
+          </span>
         </div>
       </div>
     </div>
   </div>
 </div>
   </section>  
+  
 </body>
-<script src="./js/jquery.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/bs-init.js"></script>
-<script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"
-></script>
 
-</html>
+
+<%- include ('./partials/footer.ejs')%>

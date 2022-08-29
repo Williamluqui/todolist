@@ -14,10 +14,8 @@ module.exports = {
       database : DATABASE || 'database_name'
   },
   migrations:{
-   
     directory: `${__dirname }/src/database/migrations`,
     }
 
 }
-
 };

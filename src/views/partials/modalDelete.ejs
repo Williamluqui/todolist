@@ -1,0 +1,23 @@
+<form action="/deleteList/<%=list.id%> " method="post">
+    <div class="modal fade" id="modalConfirmDelete<%=list.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+        <!--Content-->
+        <div class="modal-content text-center">
+          <!--Header-->
+          <div class="modal-header bg-danger text-white d-flex justify-content-center">
+            <p class="heading">Tem certeza que deseja excluir ? <br><%=list.body%> </p>
+          </div>
+          <!--Body-->
+          <div class="modal-body">
+            <i class="fas fa-times fa-3x text-danger animated rotateIn"></i>
+          </div>
+          <!--Footer-->
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="submit" class="btn  btn-outline-danger">Sim</button>
+            <a type="button" class="btn  btn-danger waves-effect" data-bs-dismiss="modal">Não</a>
+          </div>
+        </div>
+        <!--/.Content-->
+      </div>
+    </div>
+  </form>

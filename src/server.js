@@ -41,4 +41,9 @@ app.use(express.static( "./src/public"));
 app.use("/", router);
 
 
-app.listen(port,()  => {console.log(`Server is running on port: ${port}!`);})
+app.listen(port,(err)  => {
+ 
+    console.log(`Server is running on port: ${port}!`);
+ 
+  
+})
