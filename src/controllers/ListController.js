@@ -1,25 +1,26 @@
 const list = require("../models/List");
-var session = require("express-session");
-var flash = require("express-flash");
-var cookieParser = require("cookie-parser");
 
-let message = "";
 let type = "";
 
 class listAppController {
   async index(req, res) {
-    /**
-     * BUSCA NO BANCO DE DADOS POR UMA TAREFA
-     */
-
     try {
       let messageListVoid =
         " Sem Tarefas no momento... 😢 , Adicione sua primeira tarefa... ";
       let findList = await list.findAll();
       if (findList.length > 0) {
-        res.render("../src/views/index", {type,message: req.flash('message'),findList });
+        res.render("../src/views/index", {
+          type,
+          message: req.flash("message"),
+          findList,
+        });
       } else {
-        res.render("../src/views/index", { findList, messageListVoid });
+        res.render("../src/views/index", {
+          findList,
+          messageListVoid,
+          type,
+          message: req.flash("message"),
+        });
       }
     } catch (error) {
       res.render("../src/views/error/500");
@@ -27,21 +28,23 @@ class listAppController {
   }
   async create(req, res) {
     let { body } = req.body;
-
     try {
-      if (body <= 0 || body.length >= 50 || body == undefined) {
-        type = "danger"
-        req.flash('message','Por favor insira seu texto !')
+      if (body.length >= 50) {
+        type = "danger";
+        req.flash("message", "Coloque menos que 50 caracteres!");
         res.redirect("/");
         return;
       }
-     
-      type ="success"
-      req.flash('message','Tarefa criada !')
+      if (body <= 0 || body == undefined) {
+        type = "danger";
+        req.flash("message", "Por favor insira seu texto !");
+        res.redirect("/");
+        return;
+      }
+      type = "success";
+      req.flash("message", "Tarefa criada !");
       res.redirect("/");
-
       await list.newList(body);
-        
     } catch (error) {
       console.log(error);
     }
@@ -50,7 +53,6 @@ class listAppController {
   async findListId(req, res) {
     let { id } = req.params;
     const result = await list.findById(id);
-
     try {
       if (isNaN(id)) {
         res.redirect("/");
@@ -69,31 +71,26 @@ class listAppController {
   async updateList(req, res) {
     let id = parseInt(req.params.id);
     let { body } = req.body;
-
-    let result = await list.update(id, body);
-    let message = {};
-
     try {
-      if (isNaN(id)) {
+      if (Number.isNaN(id)) {
+        res.redirect("/");
+        console.log(isNaN(id));
+        return;
+      }
+      if (body.length <= 0) {
+        type = "danger";
+        req.flash("message", "Insira dados na lista! ");
         res.redirect("/");
         return;
       }
-      if (body <= 0 ) {
-        message = "Lista vazia , inserir dados !";
-        res.redirect("/"); // arrumar msg erro
-        return;
-      }
-      if (result != undefined) {
-        message = req.flash("Dados Atualizados com Sucesso !");
-
-        setTimeout(() => {
-            type ="success"
-            req.flash('message','Tarefa Atualizada !')
-          res.redirect("/");
-        }, 1000);
+      if (!undefined) {
+        type = "success";
+        req.flash("message", "Tarefa Atualizada !");
+        res.redirect("/");
+        await list.update(id, body);
       } else {
-        //
-        res.status(400).json({ message: "erro" });
+        type = "danger";
+        req.flash("message", "Erro tente novamente! ");
       }
     } catch (error) {
       console.log(error);
@@ -106,13 +103,29 @@ class listAppController {
     try {
       if (id != undefined) {
         await list.delete(id);
-        setTimeout(() => {
-        type ="success"
-        req.flash('message','Tarefa Deletada !')
+        type = "success";
+        req.flash("message", "Tarefa Deletada !");
         res.redirect("/");
-        }, 1000);
-        
-       
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async listChecked(req, res) {
+    let id = parseInt(req.params.id);
+    let checkId = await list.checkedList(id);
+    try {
+      if (isNaN(id)) {
+        res.redirect("/");
+        return;
+      }
+      if (checkId != undefined) {
+        res.redirect("/");
+      } else {
+        type = "danger";
+        req.flash("message", "Erro ao marcar a Tarefa!");
+        res.redirect("/");
       }
     } catch (error) {
       console.log(error);

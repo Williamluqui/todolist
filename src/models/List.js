@@ -20,7 +20,7 @@ class listApp {
   async findById(id) {
     try {
       let result = await knex
-        .select(["id", "body"])
+        .select(["id", "body", "checked"])
         .where({ id: id })
         .table("list");
 
@@ -34,6 +34,7 @@ class listApp {
       return undefined;
     }
   }
+
   async update(id, body) {
     let updateList = await this.findById(id);
 
@@ -53,6 +54,28 @@ class listApp {
       await knex.where({ id: id }).delete(id).table("list");
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async checkedList(id) {
+    try {
+      var dataCheck = await this.findById(id);
+      // MARCAÇÃO E DESM. DO CHECKBOX
+      if (dataCheck.checked == 1) {
+        dataCheck.checked = 0;
+      } else {
+        dataCheck.checked = 1;
+      }
+      if (dataCheck != undefined) {
+        await knex
+          .where({ id: id })
+          .update({ checked: dataCheck })
+          .table("list");
+        return dataCheck;
+      }
+    } catch (error) {
+      console.log(error);
+      return undefined;
     }
   }
 }

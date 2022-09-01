@@ -8,5 +8,7 @@ router.post('/savelist',listController.create);
 router.get('/list/:id',listController.findListId);
 router.post('/update/:id',listController.updateList);
 router.post('/deleteList/:id',listController.deleteList);
+router.get('/check/:id',listController.listChecked);
+
 
 module.exports = router;

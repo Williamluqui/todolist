@@ -22,8 +22,8 @@
 
 ## 💻 Sobre o projeto
 
-Para colocar os ensinamentos de MVC resolvi criar esse TodoList com o NODE usando Mysql e Knex,
-criei as migrations para o banco de dados.Para o front end usei templates Bootstrap 5 .
+Para colocar os ensinamentos de MVC resolvi criar esse TodoList com o NODE Express usando Mysql e Knex , 
+criei as migrations para o banco de dados e para o front end usei templates Bootstrap 5 modificados por mim onde adicionei modal delete e edit.
 
 
 ---
@@ -40,11 +40,12 @@ criei as migrations para o banco de dados.Para o front end usei templates Bootst
 
 
 
+
 ---
 
 ## 🎨 Layout
 
-O layout da aplicação está com um template pronto Bootstrap 5 .
+O layout da aplicação está com um template pronto feito com Bootstrap 5 .
 
 
 
