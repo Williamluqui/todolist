@@ -33,9 +33,9 @@ criei as migrations para o banco de dados e para o front end usei templates Boot
 - [x] Os usuários podem criar suas tarefas.
 - [ ] Os usuários podem editar suas tarefas.
 - [ ] Os usuários podem deletar suas tarefas.
-- [ ] Painel Login.
-- [ ] Autenticação do usuário.
-- [ ] Editar me cadastro
+- [x] Painel Login.
+- [x] Autenticação do usuário.
+- [ ] Editar meu cadastro
 - [ ] Deletar meu cadastro
 
 
