@@ -163,6 +163,9 @@ header .navbar {
     #nav-item{
         display:none;
     }
+    .img-fuid{
+        max-width: 100%;
+    }
 }
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
@@ -179,6 +182,9 @@ header .navbar {
         display: flex!important;
         
     }
+    .img-fuid{
+        max-width: 100%;
+    }
 }
 #preloader {
     position:fixed;
@@ -186,7 +192,7 @@ header .navbar {
     left:0;
     right:0;
     bottom:0;
-    background-color:#c5ddf8; /* cor do background que vai ocupar o body */
+    background-color:#ffffff31; /* cor do background que vai ocupar o body */
     z-index:999; /* z-index para jogar para frente e sobrepor tudo */
 }
 #preloader .inner {
@@ -197,7 +203,7 @@ header .navbar {
 }
 .bolas > div {
   display: inline-block;
-  background-color: #fff;
+  background-color: rgb(82, 153, 235);
   width: 25px;
   height: 25px;
   border-radius: 100%;

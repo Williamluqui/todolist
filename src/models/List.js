@@ -1,6 +1,8 @@
 const knex = require("../database/connection");
+const User = require("./User");
 
 class listApp {
+  
   async findAll() {
     try {
       let resultList = await knex.select().orderBy("id", "desc").table("list");
@@ -10,8 +12,9 @@ class listApp {
     }
   }
   async newList(body) {
+    
     try {
-      await knex.insert({ body }).table("list");
+      await knex.insert({ body}).table("list");
     } catch (error) {
       console.log(error);
     }

@@ -1,0 +1,76 @@
+<%- include ('./partials/header.ejs')%>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container">
+      <!-- Navbar brand -->
+      <a class="navbar-brand me-2" href="/">
+        <i class="fa-solid fa-graduation-cap fa-2x mx-3 ps-1"></i>
+      </a>
+<!--  Preloader -->
+<%- include ('./partials/preloader.ejs')%>
+
+
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarButtonsExample"
+        aria-controls="navbarButtonsExample"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarButtonsExample">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+        </ul>
+        <!-- Left links -->
+  
+        <div class="d-flex align-items-center">
+         <a href="/login"> <button type="button" class="btn btn-link px-3 me-2">
+            Entrar
+          </button></a>
+          <a href="/register"><button type="button" class="btn btn-primary me-3">
+            Cadastre
+          </button></a>
+          <a
+            class="btn btn-dark px-3"
+            href="https://github.com/Williamluqui/todolist" target="_blank"
+            role="button"
+            ><i class="fab fa-github"></i
+          ></a>
+        </div>
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+
+  <div class="container-lg mt-5 position-static shadow p-3 mb-5 bg-body rounded"  >
+    <div class="position-static">
+      <div class="h1 text-center mt-5 mb-4 pb-2 text-dark">
+        <h1 class="fs-1 fw-bold"> ToDoList </h1>
+        
+      </div>
+      
+        
+      <div class=" position-static bottom-50 end-50 text-center ">
+        <img class="img-fuid"  src="./images/paper.jpg" alt="">
+      </div>
+      
+    </div>
+    
+  </div>
+
+
+</body>
+<%- include ('./partials/footer.ejs')%>
+</html>

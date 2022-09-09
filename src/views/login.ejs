@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/preloader.css">
+     <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet"> 
+     <link rel="shortcut icon" href="./images/todo-icon.png" type="image/x-icon">  
+    <title>Login</title>
+</head>
+
+<main>
+
+ 
+<!--  Preloader -->
+<%- include ('./partials/preloader.ejs')%>
+<%- include ('./partials/alertsMessages.ejs')%>
+  <section class="container">
+    <!-- login -->
+    <div class="login">
+
+      <i class="fas fa-sign-in-alt"></i>
+      <strong>Bem-Vindo!</strong>
+      <span>Faça o Login</span>
+
+      <form action="/user/login" method="post">
+        <fieldset>
+          <div class="form">
+            <div class="form-row">
+              <i class="fas fa-user"></i>
+              <label class="form-label" for="input" >E-mail</label>
+              <input type="email" class="form-text" name="email" placeholder="Digite seu e-mail ">
+            </div>
+            <div class="form-row">
+              <i class="fas fa-eye"></i>
+              <label class="form-label" for="input">Senha</label>
+              <input type="password" class="form-text" name="password" placeholder="Digite sua senha">
+            </div>
+            <div class="form-row bottom">
+                
+            <a href="" class="forgot">Esqueceu a senha?</a>
+            </div>
+            <div class="form-row bottom">
+                
+              <a href="/" class="forgot">	
+                &#129052; Voltar</a>
+              </div>
+            <div class="form-row button-login">
+              <input id="tokenField" name="tokenField" type="hidden" value="<% %> " />
+              <button class="btn btn-login">Logar <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+</main>
+ 
+
+
+</body>
+<script src="./js/bs-init.js"></script>
+<script src="./js/script.js"></script>
+<script src="./js/preloader.js"></script>
+</html>

@@ -1,18 +1,44 @@
 const list = require("../models/List");
-
+const user = require("../controllers/UserController");
+const bcrypt = require('bcrypt')
+const User = require("../models/User");
 let type = "";
 
 class listAppController {
   async index(req, res) {
-    try {
-      let messageListVoid =
+  let messageListVoid =
         " Sem Tarefas no momento... 😢 , Adicione sua primeira tarefa... ";
-      let findList = await list.findAll();
+        const cookie = req.cookies.token
+        const password = await User.findAll()
+        
+        // let result = await bcrypt.compare(cookie,password[1].password);
+        // console.log(password[1].password)
+        // console.log(cookie)
+        // console.log(result)
+    try {
+      
+      const findList = await list.findAll();
+      // // filtrar tarefas do usuario logado //
+      let listUser = await findList.map((list)=>{                  
+          if (list.user_id == user.id) { 
+            console.log(list);
+              return list;
+          }else{
+              return undefined;
+          }                    
+      })
+      // retirando Null do array // 
+      listUser = listUser.filter(n => n);
+      // console.log(listUser)
+
+
       if (findList.length > 0) {
         res.render("../src/views/index", {
           type,
           message: req.flash("message"),
-          findList,
+          messageListVoid,
+          findList:listUser
+            
         });
       } else {
         res.render("../src/views/index", {
@@ -32,18 +58,18 @@ class listAppController {
       if (body.length >= 50) {
         type = "danger";
         req.flash("message", "Coloque menos que 50 caracteres!");
-        res.redirect("/");
+        res.redirect("/tasks");
         return;
       }
       if (body <= 0 || body == undefined) {
         type = "danger";
         req.flash("message", "Por favor insira seu texto !");
-        res.redirect("/");
+        res.redirect("/tasks");
         return;
       }
       type = "success";
       req.flash("message", "Tarefa criada !");
-      res.redirect("/");
+      res.redirect("/tasks");
       await list.newList(body);
     } catch (error) {
       console.log(error);
@@ -55,7 +81,7 @@ class listAppController {
     const result = await list.findById(id);
     try {
       if (isNaN(id)) {
-        res.redirect("/");
+        res.redirect("/tasks");
         return;
       }
       if (result != undefined) {
@@ -73,20 +99,20 @@ class listAppController {
     let { body } = req.body;
     try {
       if (Number.isNaN(id)) {
-        res.redirect("/");
+        res.redirect("/tasks");
         console.log(isNaN(id));
         return;
       }
       if (body.length <= 0) {
         type = "danger";
         req.flash("message", "Insira dados na lista! ");
-        res.redirect("/");
+        res.redirect("/tasks");
         return;
       }
       if (!undefined) {
         type = "success";
         req.flash("message", "Tarefa Atualizada !");
-        res.redirect("/");
+        res.redirect("/tasks");
         await list.update(id, body);
       } else {
         type = "danger";
@@ -105,7 +131,7 @@ class listAppController {
         await list.delete(id);
         type = "success";
         req.flash("message", "Tarefa Deletada !");
-        res.redirect("/");
+        res.redirect("/tasks");
       }
     } catch (error) {
       console.log(error);
@@ -117,15 +143,15 @@ class listAppController {
     let checkId = await list.checkedList(id);
     try {
       if (isNaN(id)) {
-        res.redirect("/");
+        res.redirect("/tasks");
         return;
       }
       if (checkId != undefined) {
-        res.redirect("/");
+        res.redirect("/tasks");
       } else {
         type = "danger";
         req.flash("message", "Erro ao marcar a Tarefa!");
-        res.redirect("/");
+        res.redirect("/tasks");
       }
     } catch (error) {
       console.log(error);

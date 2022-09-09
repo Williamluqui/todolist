@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/preloader.js"></script>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/preloader.css">
+    <link rel="shortcut icon" href="./images/todo-icon.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- HEADER PAGE  -->
+
+    <title>Realizar cadastro Cadastrar </title>
+</head>
+<body>
+
+ 
+<!--  Preloader -->
+<%- include ('./partials/preloader.ejs')%>
+    <section class="container">    
+        <!--  ALERTS MESSAGE  -->
+  <%- include ('./partials/alertsMessages.ejs')%>
+    <!-- register -->
+       <div class="register">
+        <i class="fas fa-user-circle"></i>
+        <strong>Criar Conta!</strong>
+        <form action="/user" method="post">
+          <fieldset>
+            <div class="form">
+              <div class="form-row">
+                <i class="fas fa-user"></i>
+                <label class="form-label" for="input" >Nome</label>
+                <input type="text" class="form-text" placeholder="Digite seu nome" name="name">
+              </div>
+              <div class="form-row">
+                <i class="fas fa-envelope"></i>
+                <label class="form-label" for="input">E-mail</label>
+                <input type="text" class="form-text" placeholder="digite o e-mail" name="email">
+              </div>
+              <div class="form-row">
+                <i class="fas fa-lock"></i>
+                <label class="form-label" for="input">Senha</label>
+                <input type="password" class="form-text" placeholder="cadastre sua senha" name="password">
+              </div>
+              <div class="form-row">
+                <i class="fas fa-lock"></i>
+                <label class="form-label" for="input">Senha</label>
+                <input type="password" class="form-text" placeholder="Repita a senha" name="confirmPassword">
+              </div>
+              <div class="form-row button-login">
+                <button class="btn btn-login">Cadastrar <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+ 
+      </div>
+    </section>
+  </main>
+  
+    
+</body>
+
+  <script src="./js/bs-init.js"></script>
+<script src="./js/script.js"></script>
+<script src="./js/preloader.js"></script>
+</html>
