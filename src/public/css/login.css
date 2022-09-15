@@ -1,5 +1,4 @@
 
- 
 * {
     box-sizing: border-box;
 }
@@ -22,6 +21,9 @@ form, fieldset {
     margin: 50px auto;
     max-width: 1200px;
     width: 100%;
+}
+.alert{
+    color: red;  
 }
 @media (max-width: 768px) {
     .container {

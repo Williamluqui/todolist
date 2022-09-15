@@ -1,38 +1,34 @@
 const list = require("../models/List");
 const user = require("../controllers/UserController");
-const bcrypt = require('bcrypt')
-const User = require("../models/User");
-let type = "";
 
+const jwt = require("jsonwebtoken");
+
+const {SECRET} = process.env;
+
+let type = "";
 class listAppController {
   async index(req, res) {
   let messageListVoid =
         " Sem Tarefas no momento... 😢 , Adicione sua primeira tarefa... ";
-        const cookie = req.cookies.token
-        const password = await User.findAll()
+        const {token} = req.cookies;
+        const decode = jwt.verify(token,SECRET);
         
-        // let result = await bcrypt.compare(cookie,password[1].password);
-        // console.log(password[1].password)
-        // console.log(cookie)
-        // console.log(result)
     try {
       
       const findList = await list.findAll();
+      
       // // filtrar tarefas do usuario logado //
-      let listUser = await findList.map((list)=>{                  
-          if (list.user_id == user.id) { 
-            console.log(list);
-              return list;
+      let listUser = await findList.map((list)=>{     
+          if (list.user_id == decode.user) { 
+              return list ;
           }else{
               return undefined;
           }                    
       })
       // retirando Null do array // 
-      listUser = listUser.filter(n => n);
-      // console.log(listUser)
-
-
+      listUser = await listUser.filter(n => n);
       if (findList.length > 0) {
+       
         res.render("../src/views/index", {
           type,
           message: req.flash("message"),
@@ -54,6 +50,10 @@ class listAppController {
   }
   async create(req, res) {
     let { body } = req.body;
+    const {token} = req.cookies;
+    const decode = jwt.verify(token,SECRET);
+    const decodeUserId= decode.user; 
+
     try {
       if (body.length >= 50) {
         type = "danger";
@@ -69,8 +69,8 @@ class listAppController {
       }
       type = "success";
       req.flash("message", "Tarefa criada !");
+      await list.newList(body,decodeUserId);
       res.redirect("/tasks");
-      await list.newList(body);
     } catch (error) {
       console.log(error);
     }
@@ -112,8 +112,8 @@ class listAppController {
       if (!undefined) {
         type = "success";
         req.flash("message", "Tarefa Atualizada !");
-        res.redirect("/tasks");
         await list.update(id, body);
+        res.redirect("/tasks");
       } else {
         type = "danger";
         req.flash("message", "Erro tente novamente! ");

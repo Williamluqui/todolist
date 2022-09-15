@@ -5,9 +5,8 @@ exports.up = (knex) =>
     table.increments('id').primary();
     table.text('body').notNullable();
     table.boolean('checked').notNullable().default(false);
-    table.integer('id_user').unsigned().notNullable();
-    table.foreign('id_user')
-    .unsigned()
+    table.integer('user_id').unsigned().notNullable();
+    table.foreign('user_id')
     .references('users.id')
     .onDelete('CASCADE')
     .onUpdate('CASCADE')

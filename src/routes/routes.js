@@ -15,13 +15,13 @@ router.get('/register',UserController.index);
 router.get('/login',UserController.indexLogin);
 
 // Router Users
-router.post('/user',validateToken,UserController.created);
+router.post('/user',UserController.created);
 router.get('/user',validateToken,UserController.allUsers);
 router.get ('/user/:id',validateToken,UserController.findUser);
-router.put('/user',validateToken,UserController.edit);
-router.delete('/user/:id',validateToken,UserController.remove);
-router.post('/recoverypassword',UserController.recoveryPassword);
-router.post('/changepassword',UserController.changePassword);
+// router.put('/user',validateToken,UserController.edit);
+// router.delete('/user/:id',validateToken,UserController.remove);
+// router.post('/recoverypassword',UserController.recoveryPassword);
+// router.post('/changepassword',UserController.changePassword);
 router.post('/user/login',UserController.signIn);
 router.get('/user/logout',UserController.logout);
 

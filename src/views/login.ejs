@@ -15,17 +15,21 @@
 <main>
 
  
-<!--  Preloader -->
-<%- include ('./partials/preloader.ejs')%>
-<%- include ('./partials/alertsMessages.ejs')%>
-  <section class="container">
-    <!-- login -->
-    <div class="login">
-
-      <i class="fas fa-sign-in-alt"></i>
-      <strong>Bem-Vindo!</strong>
-      <span>Faça o Login</span>
-
+    <!--  Preloader -->
+    <%- include ('./partials/preloader.ejs')%>
+      <section class="container">
+        <!-- login -->
+        <div class="login">
+          <i class="fas fa-sign-in-alt"></i>
+          <strong>Bem-Vindo!</strong>
+          <span>Faça o Login</span>
+          <!-- ALERT MESSAGE-->
+      <% if (message.length > 0 && type == "danger") {%>
+        <div class="alert" >
+        <%=message%>
+        </div>
+        <%}%> 
+    
       <form action="/user/login" method="post">
         <fieldset>
           <div class="form">
@@ -58,8 +62,6 @@
     </div>
   </section>
 </main>
- 
-
 
 </body>
 <script src="./js/bs-init.js"></script>

@@ -9,8 +9,8 @@ module.exports = {
     connection: {
       host : HOST || '127.0.0.1',
       port : PORT_DATABASE || 3000,
-      user : USER || 'user_host',
-      password : PASSWORD_DATABASE,
+      user : USER || 'root',
+      password : PASSWORD_DATABASE || "123456",
       database : DATABASE || 'database_name'
   },
   migrations:{

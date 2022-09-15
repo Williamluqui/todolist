@@ -5,21 +5,29 @@ class listApp {
   
   async findAll() {
     try {
-      let resultList = await knex.select().orderBy("id", "desc").table("list");
+      let resultList = await knex
+      .select()
+      .table("users")
+      .orderBy("list.id" ,"desc")
+      .innerJoin("list","list.user_id","users.id");
       return resultList;
     } catch (error) {
       console.log(error);
     }
   }
-  async newList(body) {
-    
+  async newList(body,id) {
+   
     try {
-      await knex.insert({ body}).table("list");
+      if (id == undefined) return;
+      await knex
+      .insert({body,user_id:id})  // ADICIONAR ID DO USUARIO E SALVAR NO BD
+      .table("list");
+      
     } catch (error) {
       console.log(error);
     }
   }
-
+  
   async findById(id) {
     try {
       let result = await knex
@@ -52,6 +60,7 @@ class listApp {
       }
     }
   }
+  
   async delete(id) {
     try {
       await knex.where({ id: id }).delete(id).table("list");
@@ -62,7 +71,7 @@ class listApp {
 
   async checkedList(id) {
     try {
-      var dataCheck = await this.findById(id);
+      const dataCheck = await this.findById(id);
       // MARCAÇÃO E DESM. DO CHECKBOX
       if (dataCheck.checked == 1) {
         dataCheck.checked = 0;

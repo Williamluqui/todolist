@@ -15,17 +15,19 @@
     <title>Realizar cadastro Cadastrar </title>
 </head>
 <body>
-
- 
 <!--  Preloader -->
 <%- include ('./partials/preloader.ejs')%>
     <section class="container">    
-        <!--  ALERTS MESSAGE  -->
-  <%- include ('./partials/alertsMessages.ejs')%>
     <!-- register -->
        <div class="register">
         <i class="fas fa-user-circle"></i>
         <strong>Criar Conta!</strong>
+               <!--  ALERTS MESSAGE  -->
+<% if (message.length > 0 && type == "danger") {%>
+  <div class="alert" style="color: rgb(248, 32, 32); background-color: #ffffff;" >
+  <%=message%>
+  </div>
+  <%}%> 
         <form action="/user" method="post">
           <fieldset>
             <div class="form">
@@ -55,14 +57,10 @@
             </div>
           </fieldset>
         </form>
- 
       </div>
     </section>
   </main>
-  
-    
 </body>
-
   <script src="./js/bs-init.js"></script>
 <script src="./js/script.js"></script>
 <script src="./js/preloader.js"></script>

@@ -6,7 +6,7 @@ exports.up = (knex) =>
     table.string('email',50).unique().notNullable();
     table.string('password',250).notNullable();
     table.string('id_photo');
-    table.string('confirm_email').notNullable();
+    table.integer('confirm_email').notNullable().default(0);
     table.timestamps(true, true);
    
 
