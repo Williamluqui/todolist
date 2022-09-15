@@ -5,10 +5,10 @@ const {HOST,PORT_DATABASE,USER,PASSWORD_DATABASE,DATABASE,
 //  SERVER CONNECTION // 
 module.exports = {
   development: {
-    client: CLIENT_DATABASE || 'mysql2',
+    client: 'mysql2',
     connection: {
       host : HOST || '127.0.0.1',
-      port : PORT_DATABASE || 3000,
+      port : PORT_DATABASE || 8080,
       user : USER || 'root',
       password : PASSWORD_DATABASE || "123456",
       database : DATABASE || 'database_name'
@@ -16,6 +16,5 @@ module.exports = {
   migrations:{
     directory: `${__dirname }/src/database/migrations`,
     }
-
 }
 };
