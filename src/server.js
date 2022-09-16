@@ -7,8 +7,8 @@ const {COOKIE_PARSE_KEY} = process.env;
 const {SECRET_SESION} = process.env;
 const bodyParser = require('body-parser');
 const router = require('./routes/routes');
-const session = require('express-session')
-const flash = require('express-flash')
+const session = require('cookie-session');
+const flash = require('express-flash');
 const cookieParser = require("cookie-parser");
 
 
