@@ -1,5 +1,5 @@
 require('dotenv').config({path: 'path-to-.env'})
-const {HOST,PORT_DATABASE,USER,PASSWORD_DATABASE,DATABASE,
+const {DATABASE_URL,PORT_DATABASE,USER,PASSWORD_DATABASE,DATABASE,
     CLIENT_DATABASE} = process.env
 
 //  SERVER CONNECTION // 
@@ -7,7 +7,7 @@ module.exports = {
   development: {
     client: 'mysql2',
     connection: {
-      host : HOST ,
+      host : DATABASE_URL ,
       port : PORT_DATABASE ,
       user : USER ,
       password : PASSWORD_DATABASE ,

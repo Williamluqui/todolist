@@ -60,19 +60,19 @@ class UserController{
          if(emailExist){
              type = "danger"
              req.flash("message", "Email já cadastrado!"); 
-             res.redirect("/register1")
+             res.redirect("/register")
              return;
          }
          if (password.length < 6) {
             type = "danger"
             req.flash("message", "Insira 6 caracteres");  
-            res.redirect("/register2")
+            res.redirect("/register")
             return;
         }
         if(password == undefined || password != confirmPassword){
             type = "danger"
             req.flash("message", "As Senhas estão diferentes!");  
-            res.redirect("/register3")
+            res.redirect("/register")
             return
         }     
         await User.new(email.toLowerCase(), password, name);
@@ -129,7 +129,7 @@ class UserController{
 
      async signIn(req, res){
         let {email,password} = req.body;
-        let user = await User.findByEmail(email);
+        
         
         if (email.length <= 0 || password.length <= 0) {
             type = "danger"
@@ -137,7 +137,7 @@ class UserController{
             res.redirect("/login");
             return;
         }    
-      
+        let user = await User.findByEmail(email);
         if (user != undefined) {
             const result = await  bcrypt.compare(password,user.password);
             
