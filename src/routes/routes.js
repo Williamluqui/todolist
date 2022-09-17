@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router();
 
 const HomeController = require("../controllers/HomeController");
-
 const listController = require("../controllers/ListController")
-
 const UserController = require("../controllers/UserController");
+
 // Middlewares
-const AdminAuth = require("../middlewares/AdminAuth");
-const validateToken = require("../middlewares/auth")
+const validateToken = require("../middlewares/auth");
+
 //Index
 router.get('/',HomeController.index);
 router.get('/register',UserController.index);
@@ -16,8 +15,8 @@ router.get('/login',UserController.indexLogin);
 
 // Router Users
 router.post('/user',UserController.created);
-router.get('/user',validateToken,UserController.allUsers);
-router.get ('/user/:id',validateToken,UserController.findUser);
+// router.get('/user',validateToken,UserController.allUsers);
+router.get ('/user/:id',validateToken, UserController.findUser);
 // router.put('/user',validateToken,UserController.edit);
 // router.delete('/user/:id',validateToken,UserController.remove);
 // router.post('/recoverypassword',UserController.recoveryPassword);

@@ -27,14 +27,26 @@ class UserController{
     // FILTRAR USUARIOS 
     async findUser(req,res){
         let {id} = req.params;
-        let user = await User.findById(id);
+        try {
+            const {token} = req.cookies;
+            const decode = jwt.verify(token,SECRET);
+            let user = await User.findById(id);
+        if (decode.user != id) {
+            await res.clearCookie('token');
+            return  res.redirect("/");          
+        }else{
+            res.json(user)
+        }
         if (user == undefined) {
             res.clearCookie('token');
             res.redirect('/')
-        }else{
-            res.json(user);
         }
+        } catch (error) {
+             console.log(error)
+}
+       
     }
+
 
     async created(req,res){
         let {email, name, password, confirmPassword} = req.body;
@@ -76,7 +88,7 @@ class UserController{
             return
         }     
         await User.new(email.toLowerCase(), password, name);
-        res.redirect("/tasks");
+        res.redirect("/login");
     } catch (error) {
         res.render("../src/views/error/500");
     }

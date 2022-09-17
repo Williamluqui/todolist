@@ -31,8 +31,8 @@ criei as migrations para o banco de dados e para o front end usei templates Boot
 ## ⚙️ Funcionalidades
 - [x] Os usuários podem ver suas tarefas.
 - [x] Os usuários podem criar suas tarefas.
-- [ ] Os usuários podem editar suas tarefas.
-- [ ] Os usuários podem deletar suas tarefas.
+- [x] Os usuários podem editar suas tarefas.
+- [x] Os usuários podem deletar suas tarefas.
 - [x] Painel Login.
 - [x] Autenticação do usuário.
 - [ ] Editar meu cadastro

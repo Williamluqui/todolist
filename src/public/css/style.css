@@ -249,6 +249,7 @@ header .navbar {
     #nav-item {
         display: none;
     }
+ 
 }
 
 /* All Mobile Sizes (devices and browser) */
@@ -256,7 +257,9 @@ header .navbar {
     p {
         font-size: 14px;
     }
-
+    .image{
+        padding: 0!important;
+    }
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
@@ -288,8 +291,8 @@ header .navbar {
     }
 
     #filterOrder {
-        width: 370px !important;
-        display: flex !important;
+        
+        display: none !important;
 
     }
 
