@@ -6,7 +6,7 @@ module.exports = function(req, res, next) {
      
     if(!acessToken){
         type = "danger"
-        req.flash("message", "Ops Você não tem permissão para isso !!");
+        req.flash("message", "Ops Você não tem permissão para isso !! 1");
         return res.redirect("/login");
     } 
     try {
@@ -15,7 +15,7 @@ module.exports = function(req, res, next) {
         
     } catch (err) {
         type = "danger"
-        req.flash("message", "Ops Você não tem permissão para isso !!");
+        req.flash("message", "Ops Você não tem permissão para isso !!(catch)");
         res.redirect("/login")
      return 
     }
