@@ -1,10 +1,9 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require("express");
 const app = express();
 
 const port = process.env.PORT;
-const {COOKIE_PARSE_KEY} = process.env;
-const {SECRET_SESION} = process.env;
+const {COOKIE_PARSE_KEY, SECRET_SESION} = process.env;
 const bodyParser = require('body-parser');
 const router = require('./routes/routes');
 const session = require('express-session');
@@ -12,11 +11,8 @@ const flash = require('express-flash');
 const cookieParser = require("cookie-parser");
 
 
-
 // Cookie parser
-app.use(cookieParser(COOKIE_PARSE_KEY))
-
-
+app.use(cookieParser(COOKIE_PARSE_KEY));
 
 // Session
 app.use(session({
@@ -26,10 +22,7 @@ app.use(session({
   cookie: { maxAge: 60000 }
 }))
 
-// COOKIE
-
 // Flash
-
 app.use(flash());
 
 // BODY PARSER
@@ -42,7 +35,6 @@ app.set("view engine", "ejs");
 
 // STATIC CCS
 app.use(express.static( "./src/public"));
-
 
 app.use("/", router);
 app.set('port', process.env.PORT || 3000);

@@ -1,33 +1,29 @@
 const knex = require("../database/connection");
-const User = require("./User");
 
 class listApp {
-  
   async findAll() {
     try {
       let resultList = await knex
-      .select()
-      .table("users")
-      .orderBy("list.id" ,"desc")
-      .innerJoin("list","list.user_id","users.id");
+        .select()
+        .table("users")
+        .orderBy("list.id", "desc")
+        .innerJoin("list", "list.user_id", "users.id");
       return resultList;
     } catch (error) {
       console.log(error);
     }
   }
-  async newList(body,id) {
-   
+  async newList(body, id) {
     try {
       if (id == undefined) return;
       await knex
-      .insert({body,user_id:id})  // ADICIONAR ID DO USUARIO E SALVAR NO BD
-      .table("list");
-      
+        .insert({ body, user_id: id }) // ADICIONAR ID DO USUARIO E SALVAR NO BD
+        .table("list");
     } catch (error) {
       console.log(error);
     }
   }
-  
+
   async findById(id) {
     try {
       let result = await knex
@@ -60,7 +56,7 @@ class listApp {
       }
     }
   }
-  
+
   async delete(id) {
     try {
       await knex.where({ id: id }).delete(id).table("list");

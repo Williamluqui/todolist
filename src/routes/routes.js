@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const HomeController = require("../controllers/HomeController");
-const listController = require("../controllers/ListController")
+const listController = require("../controllers/ListController");
 const UserController = require("../controllers/UserController");
 
 // Middlewares
@@ -13,18 +13,13 @@ router.get('/',HomeController.index);
 router.get('/register',UserController.index);
 router.get('/login',UserController.indexLogin);
 
-// Router Users
+// Rotas de Usuarios 
 router.post('/user',UserController.created);
-// router.get('/user',validateToken,UserController.allUsers);
 router.get ('/user/:id',validateToken, UserController.findUser);
-// router.put('/user',validateToken,UserController.edit);
-// router.delete('/user/:id',validateToken,UserController.remove);
-// router.post('/recoverypassword',UserController.recoveryPassword);
-// router.post('/changepassword',UserController.changePassword);
 router.post('/user/login',UserController.signIn);
 router.get('/user/logout',UserController.logout);
 
-// Lists
+// Rotas das Listas
 router.get('/tasks',validateToken, listController.index);
 router.post('/savelist',validateToken,listController.create);
 router.get('/list/:id',validateToken,listController.findListId);

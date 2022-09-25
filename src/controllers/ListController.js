@@ -1,40 +1,36 @@
 const list = require("../models/List");
-const user = require("../controllers/UserController");
 
 const jwt = require("jsonwebtoken");
 
-const {SECRET} = process.env;
+const { SECRET } = process.env;
 
 let type = "";
 class listAppController {
   async index(req, res) {
-  let messageListVoid =
-        " Sem Tarefas no momento... 😢 , Adicione sua primeira tarefa... ";
-        const {token} = req.cookies;
-        const decode = jwt.verify(token,SECRET);
-        
+    let messageListVoid =
+      " Sem Tarefas no momento... 😢 , Adicione sua primeira tarefa... ";
+    const { token } = req.cookies;
+    const decode = jwt.verify(token, SECRET);
+
     try {
-      
       const findList = await list.findAll();
-      
+
       // // filtrar tarefas do usuario logado //
-      let listUser = await findList.map((list)=>{     
-          if (list.user_id == decode.user) { 
-              return list ;
-          }else{
-              return undefined;
-          }                    
-      })
-      // retirando Null do array // 
-      listUser = await listUser.filter(n => n);
+      let listUser = await findList.map((list) => {
+        if (list.user_id == decode.user) {
+          return list;
+        } else {
+          return undefined;
+        }
+      });
+      // retirando Null do array //
+      listUser = await listUser.filter((n) => n);
       if (findList.length > 0) {
-       
         res.render("../src/views/index", {
           type,
           message: req.flash("message"),
           messageListVoid,
-          findList:listUser
-            
+          findList: listUser,
         });
       } else {
         res.render("../src/views/index", {
@@ -50,9 +46,9 @@ class listAppController {
   }
   async create(req, res) {
     let { body } = req.body;
-    const {token} = req.cookies;
-    const decode = jwt.verify(token,SECRET);
-    const decodeUserId= decode.user; 
+    const { token } = req.cookies;
+    const decode = jwt.verify(token, SECRET);
+    const decodeUserId = decode.user;
 
     try {
       if (body.length >= 50) {
@@ -69,7 +65,7 @@ class listAppController {
       }
       type = "success";
       req.flash("message", "Tarefa criada !");
-      await list.newList(body,decodeUserId);
+      await list.newList(body, decodeUserId);
       res.redirect("/tasks");
     } catch (error) {
       console.log(error);
