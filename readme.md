@@ -3,10 +3,9 @@
     <img alt="IMG" title="IMG" src="https://user-images.githubusercontent.com/88260564/187847393-31ddfdb6-96c9-444c-9e37-7b7b4bccbad7.png"  />
 </h1>
 
-
-![cadastro](https://user-images.githubusercontent.com/88260564/192156738-d3c2c41a-f14e-47df-9027-bc60c2d1069a.png)
-![homepage](https://user-images.githubusercontent.com/88260564/192156740-85117911-79d3-448f-a594-fa49ad763bae.png)
-![login](https://user-images.githubusercontent.com/88260564/192156742-ac721179-cd01-478b-82ed-159374d4ce34.png)
+<h1 align="center">
+    <img alt="IMG" title="IMG" src="https://user-images.githubusercontent.com/88260564/192156742-ac721179-cd01-478b-82ed-159374d4ce34.png"  />
+</h1>
 
 
 
@@ -22,6 +21,9 @@
  <a href="#-tecnologias">Tecnologias</a> • 
 </p>
 
+## ✅  Deploy do Projeto
+
+- ## [Heroku](https://app-nodew.herokuapp.com/)
 
 ## 💻 Sobre o projeto
 
@@ -57,11 +59,12 @@ O layout da aplicação está com um template pronto feito com Bootstrap 5 .
 ## 🚀 Como executar o projeto
 
 Este projeto é divido em duas partes:
-1. Backend (pasta server) junto com o Frontend
+1. Backend (pasta src/ controller, model , view ) junto com o Frontend
 2. Banco de Dados (Mysql)
 
+💡 Deploy realizado na [Heroku](https://app-nodew.herokuapp.com/). 
 
-💡Tanto o Frontend e o Banco de dados precisam que o Backend esteja sendo executado para funcionar.
+💡Caso queira utilizar na maquina: O Frontend e o Banco de dados precisam que o Backend esteja sendo executado para funcionar.
 
 ### Pré-requisitos
 
@@ -89,6 +92,8 @@ $ npm install
 # Abra o navegador :
 
 # Digite e Rode na porta escolhida http://localhost:8080/
+
+# App alocado na Heroku https://app-nodew.herokuapp.com/
 
 
 ```
