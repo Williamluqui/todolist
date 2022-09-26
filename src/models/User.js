@@ -19,11 +19,7 @@ class User {
         .select(["id", "name", "email"])
         .where({ id: id })
         .table("users");
-      if (result.length > 0) {
-        return result[0];
-      } else {
-        return undefined;
-      }
+      return (result.length > 0) ? result[0]:undefined;
     } catch (error) {
       console.log(error);
       return undefined;
@@ -40,12 +36,8 @@ class User {
   }
   async findEmail(email) {
     try {
-      var result = await knex.select("*").from("users").where({ email: email }); // verificacao se email existe
-      if (result.length > 0) {
-        return true;
-      } else {
-        return false;
-      }
+      let result = await knex.select("*").from("users").where({ email: email }); // verificacao se email existe
+      return (result.length > 0) ? true:false;
     } catch (error) {
       console.log(error);
       return false;
@@ -100,11 +92,7 @@ class User {
         .select(["id", "name", "email", "password"])
         .where({ email: email })
         .table("users");
-      if (result.length > 0) {
-        return result[0];
-      } else {
-        return undefined;
-      }
+      return (result.length > 0) ? result[0]:undefined;
     } catch (error) {
       console.log(error);
       return undefined;
@@ -113,7 +101,7 @@ class User {
   async changePassword(newPassword, id, token) {
     let hash = await bcrypt.hash(newPassword, 10);
     await knex.update({ password: hash }).where({ id: id }).table("users");
-    await Passwordtoken.setUsed(token); // DEFINIR COMO USADO
+    await Passwordtoken.setUsed(token); // DEFINIR COMO TOKEN UTILIZADO
   }
 }
 

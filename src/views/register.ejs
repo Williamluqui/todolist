@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +20,8 @@
     <section class="container">    
     <!-- register -->
        <div class="register">
-        <i class="fas fa-user-circle"></i>
+        <a href="/">  <i class="fas fa-user-circle"></i></a>
+       
         <strong>Criar Conta!</strong>
                <!--  ALERTS MESSAGE  -->
 <% if (message.length > 0 && type == "danger") {%>
@@ -41,15 +42,25 @@
                 <label class="form-label" for="input">E-mail</label>
                 <input type="text" class="form-text" placeholder="digite o e-mail" name="email">
               </div>
+              
+              <div class="importantPassword">
+                 <span style="color: #ffffff;">A senha deve ter : </span> 
+                <ul>
+                 
+                <li id="msgcharacters">No mínimo 6 Caracteres.</li>
+                <li id="msgEquals">  As senhas devem ser iguais.</li>  
+                </ul>
+              </div>
+
               <div class="form-row">
                 <i class="fas fa-lock"></i>
                 <label class="form-label" for="input">Senha</label>
-                <input type="password" class="form-text" placeholder="cadastre sua senha" name="password">
+                <input type="password" class="form-text" id="password" placeholder="cadastre sua senha" name="password">
               </div>
               <div class="form-row">
                 <i class="fas fa-lock"></i>
                 <label class="form-label" for="input">Senha</label>
-                <input type="password" class="form-text" placeholder="Repita a senha" name="confirmPassword">
+                <input type="password" class="form-text" id="confirmPassword" placeholder="Repita a senha" name="confirmPassword">
               </div>
               <div class="form-row button-login">
                 <button class="btn btn-login">Cadastrar <i class="fas fa-arrow-right"></i></button>

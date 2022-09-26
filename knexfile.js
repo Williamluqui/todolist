@@ -14,10 +14,10 @@ module.exports = {
     client: "mysql2",
     connection: {
       host: DATABASE_URL,
-      port: PORT_DATABASE,
-      user: USER,
-      password: PASSWORD_DATABASE,
-      database: DATABASE,
+      port: PORT_DATABASE ,
+      user: USER ,
+      password: PASSWORD_DATABASE ,
+      database: DATABASE 
     },
     migrations: {
       directory: `${__dirname}/src/database/migrations`,

@@ -30,12 +30,7 @@ class listApp {
         .select(["id", "body", "checked"])
         .where({ id: id })
         .table("list");
-
-      if (result.length > 0) {
-        return result[0];
-      } else {
-        return undefined;
-      }
+      return (result.length > 0) ? result[0]:undefined;   
     } catch (error) {
       console.log(error);
       return undefined;

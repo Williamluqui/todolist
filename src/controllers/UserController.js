@@ -50,7 +50,6 @@ class UserController {
 
   async created(req, res) {
     let { email, name, password, confirmPassword } = req.body;
-
     const regexEmail =
       /^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$/i;
     const regexName = /^([A-Za-z])+$/;
@@ -92,6 +91,7 @@ class UserController {
       res.render("../src/views/error/500");
     }
   }
+
   async edit(req, res) {
     let { id, name, email } = req.body;
     let result = await User.update(id, email, name);
