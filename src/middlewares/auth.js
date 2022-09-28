@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const {SECRET} = process.env;
 
-module.exports = function (req, res, next) {
+module.exports =  (req, res, next) => {
   const acessToken = req.cookies.token;
 
   if (acessToken == undefined) {

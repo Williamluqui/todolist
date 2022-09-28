@@ -30,8 +30,8 @@ confirmPassword.addEventListener('keyup', ()=> {
         validaConfimPass = false;
     }else{
         msgEquals.innerText = 'As senhas devem ser iguais.';
-        msgEquals.setAttribute('style','color:green')
-        password.setAttribute('style', 'color: black')
+        msgEquals.setAttribute('style','color:green');
+        confirmPassword.setAttribute('style', 'color: green');
         validaConfimPass = true; 
     }
 
@@ -45,7 +45,7 @@ password.addEventListener('keyup', ()=> {
     
     }else{
         msgcharacters.innerHTML = 'No mínimo 6 Caracteres..'
-        password.setAttribute('style', 'color: green')
+        password.setAttribute('style', 'color: green');
         msgcharacters.style.color = "green"
         validaPass = true;
     }
