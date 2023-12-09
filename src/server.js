@@ -2,8 +2,8 @@ require('dotenv').config();
 const express = require("express");
 const app = express();
 
-const port = process.env.PORT;
-const {COOKIE_PARSE_KEY, SECRET_SESION} = process.env;
+
+const {COOKIE_PARSE_KEY, SECRET_SESION, PORT} = process.env;
 const bodyParser = require('body-parser');
 const router = require('./routes/routes');
 const session = require('express-session');
@@ -39,6 +39,6 @@ app.use(express.static( "./src/public"));
 app.use("/", router);
 app.set('port', process.env.PORT || 3000);
 
-app.listen(port || 3000,(err)  => {
-    console.log(`Server is running on port: ${port}!`); 
+app.listen(PORT || 3000,(err)  => {
+    console.log(`Server is running on port: ${PORT}!`); 
 });

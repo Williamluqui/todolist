@@ -1,11 +1,10 @@
-require("dotenv").config({ path: "path-to-.env" });
+
 const {
   DATABASE_URL,
   PORT_DATABASE,
-  USER,
+  USER_DATABASE,
   PASSWORD_DATABASE,
   DATABASE,
-  
 } = process.env;
 
 //  SERVER CONNECTION //
@@ -15,7 +14,7 @@ module.exports = {
     connection: {
       host: DATABASE_URL,
       port: PORT_DATABASE ,
-      user: USER ,
+      user: USER_DATABASE ,
       password: PASSWORD_DATABASE ,
       database: DATABASE 
     },

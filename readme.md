@@ -23,7 +23,7 @@
 
 ## ✅  Deploy do Projeto
 
-- ## [Heroku](https://app-nodew.herokuapp.com/)
+- ## [AZURE](https://app-nodew.herokuapp.com/)
 
 ## 💻 Sobre o projeto
 
@@ -84,6 +84,10 @@ $ git clone  https://github.com/Williamluqui/todolist.git
 # Instale as dependências
 $ npm install
 
+# Migrations
+# Crie um banco de dados com o nome todolist e rode o comando abaixo.
+
+$ npx knex migrate:latest
 ```
 
 #### 🧭 Rodando a aplicação web (Frontend)
@@ -93,7 +97,7 @@ $ npm install
 
 # Digite e Rode na porta escolhida http://localhost:8080/
 
-# App alocado na Heroku https://app-nodew.herokuapp.com/
+# App alocado na Azure https://todo.wluqui.dev/
 
 
 ```

@@ -5,10 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev_start": "nodemon src/server.js"
-  },
-  "engines": {
-    "node": ">=14 <16"
+    "dev": "nodemon src/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,5 +20,8 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^2.2.0",
     "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
   }
 }
